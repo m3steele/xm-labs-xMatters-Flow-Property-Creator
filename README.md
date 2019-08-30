@@ -176,7 +176,7 @@ __All of the following JSON structures will work__:
   "e": 1
 }
 ```
-Creates the following properties:
+Above will create the following properties:
 - a
 - b
 - c
@@ -194,7 +194,7 @@ Creates the following properties:
   "e": 1
 }
 ```
-Creates the following properties:
+Above will create the following properties:
 - a
 - b.c
 - b.d
@@ -213,7 +213,7 @@ Creates the following properties:
   "e": 1
 }
 ```
-Creates the following properties:
+Above will create the following properties:
 - a
 - b.c.d
 - e
@@ -237,7 +237,7 @@ Creates the following properties:
 }
 ```
 
-Creates the following properties:
+Above will create the following properties:
 - a
 - b.c.d.e
 - b.c.d.f
