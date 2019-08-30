@@ -22,17 +22,30 @@ This xMatters communication plan contains two Flow Designer Steps to help you ea
 
 # Details
 
-- Your object does not need to be flat.
-- A "." will be added to your property name between each level of your JSON object.
-- By changing the structure of your JSON object you can change the way properties are named.
-- You must include a value as either "1" or empty"".  Valid JSON requires Key Value pairs. The value will be ignored.
+These Flow Designer Steps will help you quickly create new xMatters properties from a JSON payload of any format.
 
-- All properties will be created as:
+__The following JSON__:
 
-		- Type: "TEXT"
-		- Min characters: 0  
-		- Max characters: 20,000
-		
+```
+{
+  "item": {
+    "public_item_id": null,
+    "integrations_data": {
+      "severity": "sev-1",
+      "alert": "emergency"
+    },
+    "level_lock": 0
+  }
+}
+```
+
+__...will create the following properties__:
+
+- item.public_item_id
+- item.integrations_data.severity
+- item.integrations_data.alert
+- item.level_lock
+
 
 
 
@@ -41,17 +54,17 @@ This xMatters communication plan contains two Flow Designer Steps to help you ea
 
 - __Receive Payload__: This inbound http step sets a JSON payload to an output named "payload". This becomes the input for __Create Form Properties from Payload__ step.
 
-- __Create Form Properties from Payload__: This custom step uses the output variable payload from the __Receive Payload__ inbound http step and creates xMatters properties based on the structure of the JSON.
-
-<br>
    <kbd>
      <img src="/media/recieve-payload.png" width="250px">
    </kbd>
-   
-<br>
+<br>   
+
+- __Create Form Properties from Payload__: This custom step uses the output variable payload from the __Receive Payload__ inbound http step and creates xMatters properties based on the structure of the JSON.
+
    <kbd>
      <img src="/media/create-form-prop.png" width="250px">
    </kbd>
+<br>
 
 # xMatters Configuration
 
@@ -88,7 +101,7 @@ After importing the communication plan you will see two steps already on the can
    <kbd>
      <img src="/media/get-trigger-url.png" width="450px">
    </kbd>
-  <br><br> 
+  <br>
   
 2. Select Authenticating User. This needs to be a user with access permissions on the communication plan you want to add properties to and the __REST Web Service User__ role.   
    
@@ -106,11 +119,13 @@ After importing the communication plan you will see two steps already on the can
    <br><br> 
    
 2. In the Input named __planName__, type the name of the communication plan you want the properties to be created in. 
-This is the user friendly name of __any__ communication plan in your xMatters environment. You do not need to add properties to this communication plan. This communication plan only holds the steps to make this work with any other communication plan in your xMatters environment.
+- This is the user friendly name of __any__ communication plan in your xMatters environment. 
+- You do not need to add properties to this communication plan. 
+- This communication plan only holds the steps to make this work with any other communication plan in your xMatters environment.
 
 
    <kbd>
-     <img src="/media/friendly-name.png" width="300px">
+     <img src="/media/friendly-name.png" width="450px">
    </kbd>
 <br><br> 
 
@@ -118,13 +133,18 @@ This is the user friendly name of __any__ communication plan in your xMatters en
 
 
    <kbd>
-     <img src="/media/endpoint.png" width="300px">
+     <img src="/media/endpoint.png" width="450px">
    </kbd>
-<br><br> 
+<br>
 
 ### POST to xMatters Http Trigger URL using Postman or similar tool
 
 - The xMatters http trigger step uses an api key for authentication. You will not need to include authentication headers in your POST.
+
+   <kbd>
+     <img src="/media/post.png" width="600px">
+   </kbd>
+<br><br>
 
 1. Create new POST request.
 
@@ -144,6 +164,8 @@ This is the user friendly name of __any__ communication plan in your xMatters en
 		- Min characters: 0  
 		- Max characters: 20,000
 		
+
+
 
 __All of the following JSON structures will work__:
 
@@ -224,7 +246,7 @@ Creates the following properties:
 
 
    <kbd>
-     <img src="/media/post.png" width="500px">
+     <img src="/media/post.png" width="600px">
    </kbd>
 <br><br>
 
@@ -233,7 +255,7 @@ Creates the following properties:
 - the output __properties_created__ on __Create Form Properties__ Step will show an array with all properties that were created.
 
    <kbd>
-     <img src="/media/activity.png" width="500px">
+     <img src="/media/activity.png" width="600px">
    </kbd>
 <br><br>
 
@@ -242,11 +264,11 @@ After adding properties successfully, you will still need to drag the properties
 
 
    <kbd>
-     <img src="/media/properties-added.png" width="400px">
+     <img src="/media/properties-added.png" width="500px">
    </kbd>
 <br>
    <kbd>
-     <img src="/media/form.png" width="400px">
+     <img src="/media/form.png" width="500px">
    </kbd>
 <br><br>
 
